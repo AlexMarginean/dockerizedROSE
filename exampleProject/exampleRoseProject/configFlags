@@ -1,0 +1,12 @@
+./configure CPPFLAGS="-I/home/alex/Development/Tools/RoseCompiler/roseInstalation/include -I/home/alex/Development/Tools/Boost/Boost_1_45_install/include" LDFLAGS="-L/home/alex/Development/Tools/RoseCompiler/roseInstalation/lib -L/home/alex/Development/Tools/Boost/Boost_1_45_install/lib -L/usr/lib/jvm/jdk1.8.0_25/jre/lib/amd64/server" CFLAGS="-O0 -g" CXXFLAGS="-O0 -g"
+
+
+EDG4:
+./configure CPPFLAGS="-I/home/alex/Development/Tools/RoseEDG_4_x/InstallTree/include -I/home/alex/Development/Tools/RoseEDG_4_x/InstallTree/include/rose -I/home/alex/Development/Tools/Boost/Boost_1_45_install/include" LDFLAGS="-L/home/alex/Development/Tools/RoseEDG_4_x/InstallTree/lib -L/home/alex/Development/Tools/Boost/Boost_1_45_install/lib -L/usr/lib/jvm/jdk1.8.0_25/jre/lib/amd64/server" CFLAGS="-O0 -g" CXXFLAGS="-O0 -g"
+
+EDG4 - newROSE:
+./configure CPPFLAGS="-I/home/alex/Development/Tools/ROSE_LAST_REPO_VERSION/InstallTree/include -I/home/alex/Development/Tools/ROSE_LAST_REPO_VERSION/InstallTree/include/rose -I/home/alex/Development/Tools/ROSE_LAST_REPO_VERSION/boost/boost_install_tree/include" LDFLAGS="-L/home/alex/Development/Tools/ROSE_LAST_REPO_VERSION/InstallTree/lib -L/home/alex/Development/Tools/ROSE_LAST_REPO_VERSION/boost/boost_install_tree/lib -L/usr/lib/jvm/jdk1.8.0_25/jre/lib/amd64/server" CFLAGS="-O0 -g" CXXFLAGS="-O0 -g"
+
+EDG4 - newROSE - boost 1.53
+./configure CPPFLAGS="-I/home/alex/Development/Tools/ROSE_LAST_REPO_VERSION/InstallTree/include -I/home/alex/Development/Tools/ROSE_LAST_REPO_VERSION/InstallTree/include/rose -I/home/alex/Development/Tools/ROSE_LAST_REPO_VERSION/boost/boost_1_53_install_tree/include" LDFLAGS="-L/home/alex/Development/Tools/ROSE_LAST_REPO_VERSION/InstallTree/lib -L/home/alex/Development/Tools/ROSE_LAST_REPO_VERSION/boost/boost_1_53_install_tree/lib -L/usr/lib/jvm/jdk1.8.0_25/jre/lib/amd64/server" CFLAGS="-O0 -g" CXXFLAGS="-O0 -g"
+

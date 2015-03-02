@@ -1,0 +1,4 @@
+Host goa.cs.ucl.ac.uk:ucl/transplant.git
+	Hostname goa.cs.ucl.ac.uk:ucl/transplant.git
+	User gitolite
+	IdentityFile ~/.ssh/id_rsa
