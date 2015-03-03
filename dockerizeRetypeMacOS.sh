@@ -8,7 +8,7 @@ sudo cp -r ~/.ssh ssh/
 docker build -t development/rose .
 OUT=$?
 
-if [$OUT -ne 0]; then
+if [ $OUT -ne 0 ]; then
 	echo "This try has failed!"
 	exit 1
 else

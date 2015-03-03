@@ -6,7 +6,7 @@ AC_CONFIG_HEADERS([include/config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([1.11 foreign subdir-objects -Wall -Werror])
 #AC_CONFIG_FILES([Makefile src/Makefile src/translatorSrc/Makefile])
-AC_CONFIG_FILES([Makefile src/Makefile src/ST/Makefile src/retypeOperationAnalysis/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile])
 
 
 

@@ -79,24 +79,21 @@ RUN ls
 RUN apt-get update && apt-get install -y libgtk2.0-0 libcanberra-gtk-module
 
 
-RUN cd /home && wget http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/technology/epp/downloads/release/luna/SR1/eclipse-cpp-luna-SR1-linux-gtk-x86_64.tar.gz  && tar -xzvf eclipse-cpp-luna-SR1-linux-gtk-x86_64.tar.gz
+#clone eclipse
+RUN cd /home && cp /home/ROSE/BuildFolder/git.sh . && ./git.sh -i /root/.ssh/id_rsa clone gitolite@goa.cs.ucl.ac.uk:projects/retype/eclipse
+
+RUN cd /home && mv eclipse/eclipse.tar.gz . && rm -r eclipse && tar -xzvf eclipse.tar.gz 
 
 RUN echo "/home/eclipse/eclipse -vm /usr/lib/jdk1.8.0_25/jre/bin/java" > /usr/bin/eclipse
 
-
 RUN chmod +x /usr/bin/eclipse
-
-
-#echo /home/development/eclipse/eclipse -vm /usr/lib/jdk1.8.0_25/bin/java > /usr/bin/eclipse
-
-
-
-#RUN mkdir /root/development
 
 ENV JAVA_HOME /usr/lib/jdk1.8.0_25
 ENV LD_LIBRARY_PATH /home/ROSE/BoostInstallTree/lib:/usr/lib/jdk1.8.0_25/jre/lib/amd64/server:
 
 RUN cp /home/ROSE/BuildFolder/RoseCompileTree/rose_config.h /home/ROSE/RoseInstallTree/include/rose
+
+RUN apt-get update && apt-get install -y gdb gitk
 
 #new user needed for running X server apps
 #RUN echo "developer:x:1000:1000:Developer,,,:/home/development:/bin/bash" >> /etc/passwd && \
