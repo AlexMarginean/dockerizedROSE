@@ -9,6 +9,8 @@ Docker is a relatively recent technology that developers and sysadmins use to bu
 
 The contained Dockerfile and scripts will build the ROSE compiler infrastructure, togheter with an example autotools project. ROSE is built in a docker container. The path to the example project inside the container is: /root/development/exampleRoseProject, while the path for the installed ROSE is: /home/ROSE/RoseInstallTree . Togheter with ROSE the container contains eclipse. ROSE is installed with gcc 4.8 and Boost 1.53 . 
 
+Please feel free to contact us with any questions at : alexandru.marginean.13@ucl.ac.uk
+
 ### Requirements
 
 The current version support Linux and Mac OS X systems. We automatically detect your operating system, and check some of the hardware requirements. You should have at least 6GB RAM memory and 50GB available disk space on the phisic location of the docker container. By default the compilation of ROSE is done on 8 threads. Acording to the number of cores in your system you can increase / decrease this number: in ''Dockerfile'' find and replace ''-j8'' with ''-jx'', where x is the number of threads to be used by Make in building ROSE. This should be maximum the number of cores existing on your system.
@@ -79,3 +81,15 @@ If you want to change the default location of the docker images (for saving spac
                 sudo rm -r /var/lib/docker
                 sudo services docker.io start / sudo services docker start
 		```
+		
+## Security
+
+Docker has been used and trusted by different companies, such as Gilt Groupe Inc., Yelp, and Baidu Inc, so we believe it does not contain any trojans or malware.
+
+We have used Docker version 1.2.0 and Klee is built on Ubuntu 14.04.
+
+The docker daemon always runs as the root user, and since Docker version 0.5.2, the docker daemon binds to a Unix socket instead of a TCP port. By default that Unix socket is owned by the user root, and so, by default, you need to access it with sudo.
+
+Starting in version 0.5.3, if you (or your Docker installer) create a Unix group called docker and add users to it, then the docker daemon will make the ownership of the Unix socket read/writable by the docker group when the daemon starts. The docker daemon must always run as the root user, but if you run the docker client as a user in the docker group then you don't need to add sudo to all the client commands. As of 0.9.0, you can specify that a group other than docker should own the Unix socket with the -G option. However, the docker group (or the group specified with -G) is root-equivalent.
+
+You can verify that the script does nothing more by inspection. The secure hash of the Dockerfile and two patches can be found in the checksum file.
