@@ -43,39 +43,39 @@ Run Project -> Build All, and then you will be able to use eclipse for retype.
 ### GUI on Mac OS X
 
 * On linux machines the GUI (for eclipse) should run by default. However, on Mac OS X systems there are some additional requirements for running GUI program. A way for this is:
- 	1) Install socat and xquartz: 
+ 	1. Install socat and xquartz: 
 		```
 		brew install socat
 		brew cask install xquartz
 		open -a XQuartz
 		```
-	2) Before running **./run.sh** open a different terminal window, and open socat: 
+	2. Before running **./run.sh** open a different terminal window, and open socat: 
 		```
 		socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"
 		```
-	3) Run **./run.sh eclipse** and the GUI should work
+	3. Run **./run.sh eclipse** and the GUI should work
 
 * We assume that you use the default ip address for boot2docker. If not, check the ip address in boot2docker (boot2docker conf), and replace: ```192.168.59.3``` with the identified IP address . 
 
 ### Change the Default Location of the Docker Images
 
 If you want to change the default location of the docker images (for saving space on / ), on Linux systems, then:
-
-	1. Edit with a text editor the configurations of docker:
-		* ```sudo vim /etc/default/docker.io``` :  for Ubuntu 14.04  
-		* ```sudo vim /etc/default/docker``` : for any supported system, excepting Ubuntu 14.04  
-	2. Add / replace the line containing ```DOCKER_OPTS``` with: 
-	 	* ```DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 --storage-driver=devicemapper --storage-opt dm.basesize=50G -g PATH_CONTAINERS"```
-	3. Restart the docker service: 
-		* ```sudo services docker.io restart``` : for Ubuntu 14.04 
-		* ```sudo services docker restart```: for any supported system, excepting Ubuntu 14.04 
-	4. Check the size available for containers. It should be at least 50GB:
-		* ```sudo docker run -P -e --rm ubuntu:14.04 df -h / ``` : check that the size of the root partition is 50G. If it is not then: 
-			```
-			sudo docker stop $(sudo docker ps -a -q)
-                	sudo docker rm $(sudo docker ps -a -q)
-                	sudo docker rmi $(sudo docker images -a)
-                	sudo services docker.io stop / sudo services docker stop           
-                	sudo rm -r /var/lib/docker
-                	sudo services docker.io start / sudo services docker start
-			```
+* Edit with a text editor the configurations of docker:
+	* ```sudo vim /etc/default/docker.io``` :  for Ubuntu 14.04  
+	* ```sudo vim /etc/default/docker``` : for any supported system, excepting Ubuntu 14.04  
+* Add / replace the line containing ```DOCKER_OPTS``` with: 
+	* ```DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 --storage-driver=devicemapper --storage-opt dm.basesize=50G -g PATH_CONTAINERS"```
+* Restart the docker service: 
+	* ```sudo services docker.io restart``` : for Ubuntu 14.04 
+	* ```sudo services docker restart```: for any supported system, excepting Ubuntu 14.04 
+* Check the size available for containers. It should be at least 50GB:
+	* ```sudo docker run -P -e --rm ubuntu:14.04 df -h / ``` : check that the size of the root partition is 50G. If it is not then: 
+		* 
+		```
+		sudo docker stop $(sudo docker ps -a -q)
+                sudo docker rm $(sudo docker ps -a -q)
+                sudo docker rmi $(sudo docker images -a)
+                sudo services docker.io stop / sudo services docker stop           
+                sudo rm -r /var/lib/docker
+                sudo services docker.io start / sudo services docker start
+		```
